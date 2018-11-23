@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -25,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final Intent intent = new Intent(this, SecondActivity.class);
+        final Intent firstIntent = new Intent(this, SecondActivity.class);
+        final Intent secondIntent = new Intent(this, ListView.class);
 
 
         textView = (TextView)findViewById(R.id.textView);
@@ -49,13 +51,13 @@ public class MainActivity extends AppCompatActivity {
             public void onGesturePerformed(GestureOverlayView overlay, Gesture gesture) {
                 ArrayList<Prediction> predictionArray = gestureLibrary.recognize(gestureView.getGesture());
                 for (Prediction prediction : predictionArray) {
-                    if (prediction.name == "action_left") {
+                    if (prediction.score > 1) {
                         textView.setText(prediction.name + " score: " + prediction.score);
-                        startActivity(intent);
+                        //startActivity(firstIntent);
                     }
                     if (prediction.name == "action_up") {
                         textView.setText(prediction.name + " score: " + prediction.score);
-
+                        startActivity(secondIntent);
                     }
                 }
             }
