@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+// Code by Marek
 public class ListViewActivity extends AppCompatActivity {
 
     @Override

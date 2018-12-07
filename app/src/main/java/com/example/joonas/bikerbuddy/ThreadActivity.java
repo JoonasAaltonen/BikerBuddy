@@ -1,12 +1,14 @@
 package com.example.joonas.bikerbuddy;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
+// Code by Mark and Joonas
 public class ThreadActivity extends AppCompatActivity {
 
     @Override
@@ -14,16 +16,26 @@ public class ThreadActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_forum_thread);
 
-        Intent intent = getIntent();
-        String postTitle = intent.getStringExtra(ForumActivity.placeHolder);
-
         TextView titleText = (TextView)findViewById(R.id.forumTextView1);
-        titleText.setText(postTitle);
-    }
+        TextView postText = (TextView)findViewById(R.id.forumTextView2);
 
-    public void OnClickReply(View view) {
-        Intent postIntent = new Intent(this, PostActivity.class);
-        startActivity(postIntent);
+        Intent intent = getIntent();
+
+        String postTitle = intent.getStringExtra(ForumActivity.EXTRA_STRING);
+
+        titleText.setText(postTitle);
+
+        DatabaseHandler dbHandler = new DatabaseHandler(this);
+
+        Cursor data = dbHandler.getPostContent(postTitle);
+        //postText.setText(data.getString(0));
+        while(data.moveToNext()){
+            //Move the cursor to the first (and only) item and set the data to the text view
+            postText.setText(data.getString(0));
+        }
+
+
+
     }
 
     public void OnClickBack(View view) {

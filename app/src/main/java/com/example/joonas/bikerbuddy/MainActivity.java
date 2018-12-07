@@ -14,6 +14,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
+// Swipe gesture code by Joonas
+
 public class MainActivity extends AppCompatActivity {
 
     GestureLibrary gestureLibrary;
@@ -31,7 +33,6 @@ public class MainActivity extends AppCompatActivity {
         forumIntent = new Intent(this, ForumActivity.class);
         listIntent = new Intent(this, ListViewActivity.class);
 
-        textView = (TextView)findViewById(R.id.textView);
         imageView = (ImageView)findViewById(R.id.imageView);
         gestureLibrary = GestureLibraries.fromRawResource(this, R.raw.gestures);
         if (!gestureLibrary.load()) {

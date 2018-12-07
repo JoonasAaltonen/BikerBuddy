@@ -36,46 +36,37 @@
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
-        android:textSize="20dp"
+        android:textSize="22dp"
+        android:textStyle="bold"
         android:textColor="@color/colorAccent"
         />
 
     <TextView
         android:id="@+id/forumTextView2"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Post content: Lorem ipsum and stuff like that. Looooong post with multiple lines and so on"
+        android:layout_height="303dp"
         android:layout_marginStart="8dp"
         android:layout_marginLeft="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:layout_marginRight="8dp"
         android:layout_marginBottom="8dp"
+        android:text="Post content: Lorem ipsum and stuff like that. Looooong post with multiple lines and so on"
+        android:textColor="@color/colorPrimaryDark"
         android:textSize="20dp"
-        android:textColor="@color/colorPrimaryDark"/>
+        android:scrollbars = "vertical"
+        />
 
     <View
         android:layout_width="fill_parent"
         android:layout_height="2dp"
         android:background="#c0c0c0"/>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
+    <Button
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Reply"
-            android:onClick="OnClickReply"/>
-        <Button
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="50dp"
-            android:text="Back to thread list"
-            android:onClick="OnClickBack"/>
-    </LinearLayout>
+        android:text="Back to thread list"
+        android:onClick="OnClickBack"/>
 
 
 </LinearLayout>

@@ -7,6 +7,8 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.database.DatabaseUtils.InsertHelper;
 
+// Created by Joonas Aaltonen
+
 // Used guidance from
 // https://github.com/mitchtabian/SaveReadWriteDeleteSQLite/blob/master/SaveAndDisplaySQL/app/src/main/java/com/tabian/saveanddisplaysql/DatabaseHelper.java
 // To create the databasehandler
@@ -65,14 +67,27 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         } else {
             return true;
         }
-
-       // InsertHelper ih = new InsertHelper(db, forumTableName);
-
     }
 
-    public Cursor getData(){
+    public void updateData(String oldTitle ,String newTitle, String newContent) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String updateStatement = "UPDATE " + forumTableName +
+                " SET " + titleColumn + " = '" + newTitle +
+                "', " + contentColumn + " = '" + newContent +
+                "' WHERE " + titleColumn + " = '" + oldTitle +"'";
+        db.execSQL(updateStatement);
+    }
+
+    public Cursor getAllData(){
         SQLiteDatabase db = this.getWritableDatabase();
         String query = "SELECT * FROM " + forumTableName;
+        Cursor data = db.rawQuery(query, null);
+        return data;
+    }
+
+    public Cursor getPostContent(String postTitle) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        String query = "SELECT postContent FROM " + forumTableName + " WHERE title = '" + postTitle + "'";
         Cursor data = db.rawQuery(query, null);
         return data;
     }
