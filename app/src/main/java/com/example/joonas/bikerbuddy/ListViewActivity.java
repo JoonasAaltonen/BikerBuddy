@@ -22,9 +22,9 @@ public class ListViewActivity extends AppCompatActivity {
                 "Contact the developer",};
 
         ArrayAdapter adapter = new ArrayAdapter<String>(this,
-                R.layout.activity_list_view, mobileArray);
+                R.layout.activity_help_list_display, mobileArray);
         // Get ListView object from XML
-        ListView listView = (ListView) findViewById(R.id.mobile_list);
+        ListView listView = (ListView) findViewById(R.id.thread_list);
         listView.setAdapter(adapter);
 
     }
